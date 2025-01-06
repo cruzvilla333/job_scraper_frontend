@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Job Search</h2>
+
+    <form class="shadow-lg p-4 rounded bg-light">
+        <!-- Job Title Input -->
+        <div class="form-group mb-3">
+            <label for="jobTitle" class="form-label">Job Title</label>
+            <input
+                    type="text"
+                    id="jobTitle"
+                    class="form-control"
+                    placeholder="Enter job title"
+                    [(ngModel)]="jobTitle"
+                    name="jobTitle"
+            />
+        </div>
+
+        <!-- Company Dropdown -->
+        <div class="form-group mb-3">
+            <label for="company" class="form-label">Company</label>
+            <select id="company" class="form-control" [(ngModel)]="company" name="company">
+                <option value="chewy">Chewy</option>
+            </select>
+        </div>
+
+        <!-- Search Button -->
+        <div class="text-center">
+            <button type="button" class="btn btn-primary btn-lg w-50" (click)="searchJobs()">Search</button>
+        </div>
+    </form>
+
+    <div *ngIf="isLoading" class="mt-4 text-center">
+        <p>Loading...</p>  <!-- Display loading message -->
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger mt-4 text-center">
+        {{ errorMessage }}  <!-- Display error message if there's an issue -->
+    </div>
+
+    <div *ngIf="searchResults.length > 0" class="mt-4">
+        <h3 class="text-center mb-3">Search Results:</h3>
+        <ul class="list-group">
+            <li *ngFor="let result of searchResults" class="list-group-item">
+                {{ result.jobTitle }} at {{ result.company }}  <!-- Display job details -->
+            </li>
+        </ul>
+    </div>
+</div>

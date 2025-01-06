@@ -1,0 +1,23 @@
+/* Custom styling for the job search form */
+.container {
+  max-width: 600px; /* Limit container width */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Ensure consistent spacing */
+}
+
+h2 {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: #333;
+}
+
+button {
+  font-size: 18px;
+}
+
+ul.list-group {
+  max-height: 300px;
+  overflow-y: auto;  /* Makes the list scrollable if there are many results */
+}
