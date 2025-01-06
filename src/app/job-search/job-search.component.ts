@@ -16,7 +16,7 @@ import { NgForOf, NgIf } from "@angular/common";
   styleUrls: ['./job-search.component.scss']
 })
 export class JobSearchComponent {
-  jobTitle: string = 'software engineer';
+  jobTitle: string = '';
   company: string = 'chewy';
   searchResults: any[] = [];
   isLoading: boolean = false;
