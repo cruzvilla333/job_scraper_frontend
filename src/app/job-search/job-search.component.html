@@ -1,48 +1,46 @@
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Job Search</h2>
+<div class="job-search">
+    <h2 class="job-search__title">Job Search</h2>
 
-    <form class="shadow-lg p-4 rounded bg-light">
-
-        <div class="form-group mb-3">
-            <label for="jobTitle" class="form-label">Job Title</label>
+    <form class="job-search__form">
+        <div class="form-group">
+            <label for="jobTitle" class="form-group__label">Job Title</label>
             <input
                     type="text"
                     id="jobTitle"
-                    class="form-control"
+                    class="form-group__input"
                     placeholder="Enter job title"
                     [(ngModel)]="jobTitle"
                     name="jobTitle"
             />
         </div>
 
-
-        <div class="form-group mb-3">
-            <label for="company" class="form-label">Company</label>
-            <select id="company" class="form-control" [(ngModel)]="company" name="company">
+        <div class="form-group">
+            <label for="company" class="form-group__label">Company</label>
+            <select id="company" class="form-group__select" [(ngModel)]="company" name="company">
                 <option value="chewy">Chewy</option>
             </select>
         </div>
 
-
-        <div class="text-center">
-            <button type="button" class="btn btn-primary btn-lg w-50" (click)="searchJobs()">Search</button>
-        </div>
+        <button type="button" class="job-search__button" (click)="searchJobs()">Search</button>
     </form>
 
-    <div *ngIf="isLoading" class="mt-4 text-center">
-        <p>Loading...</p>
+    <div *ngIf="isLoading" class="job-search__loading">
+        <div class="loader"></div>
+        <p>Searching for jobs...</p>
     </div>
 
-    <div *ngIf="errorMessage" class="alert alert-danger mt-4 text-center">
+    <div *ngIf="errorMessage" class="job-search__error">
         {{ errorMessage }}
     </div>
 
-    <div *ngIf="searchResults.length > 0" class="mt-4">
-        <h3 class="text-center mb-3">Search Results:</h3>
-        <ul class="list-group">
-            <li *ngFor="let result of searchResults" class="list-group-item">
-                {{ result.jobTitle }} in {{ result.jobLocation }}
+    <div *ngIf="searchResults.length > 0" class="job-search__results">
+        <h3 class="job-search__results-title">Search Results:</h3>
+        <ul class="job-search__results-list">
+            <li *ngFor="let result of searchResults" class="job-search__result-item">
+                <h4 class="job-search__result-title">{{ result.jobTitle }}</h4>
+                <p class="job-search__result-location">{{ result.jobLocation }}</p>
             </li>
         </ul>
     </div>
 </div>
+
