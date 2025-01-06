@@ -1,6 +1,10 @@
 # JobScraperFrontend
 
 ## Development server
+Install dependencies, run:
+
+```npm install
+```
 
 To start a local development server, run:
 
