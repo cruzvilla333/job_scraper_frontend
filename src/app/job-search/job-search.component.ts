@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { FormsModule } from "@angular/forms";
 import { NgForOf, NgIf } from "@angular/common";
+import {catchError, EMPTY} from "rxjs";
 
 @Component({
   selector: 'app-job-search',
@@ -10,8 +11,7 @@ import { NgForOf, NgIf } from "@angular/common";
   imports: [
     FormsModule,
     NgForOf,
-    NgIf,
-    HttpClientModule
+    NgIf
   ],
   styleUrls: ['./job-search.component.scss']
 })
@@ -35,16 +35,17 @@ export class JobSearchComponent {
       params: {
         jobTitle: this.jobTitle
       }
-    })
-        .subscribe(
-            (data: any) => {
-              this.searchResults = data.jobs;
-              this.isLoading = false;
-            },
-            () => {
-              this.errorMessage = 'Failed to load jobs. Please try again later.';
-              this.isLoading = false;
-            }
-        );
+    }).pipe(
+        catchError( () => {
+          this.errorMessage = 'Failed to load jobs. Please try again later.';
+          this.isLoading = false;
+          return EMPTY;
+        })
+    ).subscribe({
+      next: (data: any) => {
+        this.searchResults = data.jobs;
+        this.isLoading = false;
+      }
+    });
   }
 }
