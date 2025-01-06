@@ -3,8 +3,7 @@
 ## Development server
 Install dependencies, run:
 
-```npm install
-```
+```npm install```
 
 To start a local development server, run:
 
