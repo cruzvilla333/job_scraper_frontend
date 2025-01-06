@@ -3,7 +3,9 @@
 ## Development server
 Install dependencies, run:
 
-```npm install```
+```bash
+npm install
+```
 
 To start a local development server, run:
 
